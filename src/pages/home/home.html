@@ -1,14 +1,17 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar padding color='primary' >
     <ion-title>
-      Ionic Blank
+      Events in Ireland
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content >
+  <ion-list>
+    <ion-card padding color='primary'  (click)='GoEvent(e.url)' *ngFor="let e of events"> 
+      <h1>{{e.name}}</h1> 
+      <p>{{e._embedded.venues[0].name}}<br>Date: {{e.dates.start.localDate}}<br>Time: {{e.dates.start.localTime}}</p> 
+      <img src={{e.images[1].url}}>
+    </ion-card>
+  </ion-list>
 </ion-content>
